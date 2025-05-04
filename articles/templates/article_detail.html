@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<article class="article-detail">
+    <header>
+        <h1 class="article-title">{{ article.title }}</h1>
+        <p class="article-meta">
+            Category: <a href="{% url 'category_articles' category_id=article.category.id %}">{{ article.category.name }}</a> |
+            Author: {{ article.author.username }} |
+            Published on: {{ article.created_at|date:"F j, Y" }}
+        </p>
+    </header>
+
+    <section class="article-content">
+        {{ article.content|safe }}
+    </section>
+
+    <div class="back-link">
+        <a href="{% url 'home' %}">← Back to Home</a>
+    </div>
+</article>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PhDinAI - Learn AI Deeply</title>
+    <link rel="stylesheet" href="{% static 'articles/style.css' %}">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'articles/images/logo.png' %}" alt="PhDinAI Logo">
+                </a>
+            </div>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="{% url 'category_articles' category_id=1 %}">AI Tools</a></li>
+                    <li><a href="{% url 'category_articles' category_id=2 %}">Projects</a></li>
+                    <li><a href="{% url 'category_articles' category_id=3 %}">News</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2025 <strong>PhDinAI.com</strong> — Your Journey to Master AI 🚀</p>
+        </div>
+    </footer>
+
+</body>
+</html>

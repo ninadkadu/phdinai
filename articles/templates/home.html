@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="welcome-section">
+    <h1>Welcome to <strong>PhDinAI.com</strong></h1>
+    <p>Explore the latest <strong>AI Tools</strong>, exciting <strong>Projects</strong>, and cutting-edge <strong>Research News</strong>!</p>
+</section>
+
+<section class="latest-articles">
+    <h2>Latest Articles</h2>
+
+    {% if articles %}
+        <ul class="article-list">
+            {% for article in articles %}
+                <li class="article-item">
+                    <a href="{% url 'article_detail' article_id=article.id %}" class="article-link">{{ article.title }}</a>  
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No articles available yet. Stay tuned!</p>
+    {% endif %}
+</section>
+{% endblock %}

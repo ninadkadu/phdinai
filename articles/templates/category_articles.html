@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="category-section">
+    <header>
+        <h2 class="category-title">{{ selected_category.name }}</h2>
+        <p class="category-description">Explore articles under the <strong>{{ selected_category.name }}</strong> category.</p>
+    </header>
+
+    {% if articles %}
+        <ul class="category-article-list">
+            {% for article in articles %}
+                <li class="category-article-item">
+                    <h3 class="article-title-small">
+                        <a href="{% url 'article_detail' article_id=article.id %}">{{ article.title }}</a>
+                    </h3>
+                    <p class="article-snippet">
+                        {{ article.content|truncatechars:200 }}
+                        <a href="{% url 'article_detail' article_id=article.id %}">Read more →</a>
+                    </p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No articles found in this category.</p>
+    {% endif %}
+</section>
+
+<div class="back-link">
+    <a href="{% url 'home' %}">← Back to Home</a>
+</div>
+{% endblock %}
